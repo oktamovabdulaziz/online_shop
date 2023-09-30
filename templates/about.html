@@ -1,0 +1,130 @@
+ {% extends 'base.html' %}
+  {% load static %}
+   {% block content %}
+
+    <main class="main-content">
+    <!--== Start Page Title Area ==-->
+    <section class="page-title-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-title-content ">
+              <h2 class="title">about</h2>
+              <div class="bread-crumbs"><a href="{% url 'index' %}">Home<span class="breadcrumb-sep">></span></a><span class="active">about</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Page Title Area ==-->
+
+    <!--== Start About Area ==-->
+    <section class="about-area about-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="about-content">
+              <div class="section-title mb-0">
+                <h2 class="title">{{ about.name }}</h2>
+              </div>
+              <p class="mb-15">{{ about.text }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="thumb thumb-hover mt-md-30">
+              <img src="{{ about.photo.url }}" alt="Olivine-Image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End About Area ==-->
+
+    <!--== Start Featured Product Area Wrapper ==-->
+    <div class="divider-area divider-about-area">
+      <div class="container">
+        <div class="row flex-row-reverse">
+          <div class="col-lg-6">
+            <div class="tab-default mb-md-40">
+              <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="mission-tab" data-bs-toggle="pill" data-bs-target="#mission" type="button" role="tab" aria-controls="mission" aria-selected="true">Mission</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="vision-tab" data-bs-toggle="pill" data-bs-target="#vision" type="button" role="tab" aria-controls="vision" aria-selected="false">Vision</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="goal-tab" data-bs-toggle="pill" data-bs-target="#goal" type="button" role="tab" aria-controls="goal" aria-selected="false">Goal</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                  <p>{{ beard.mission }}</p>
+                </div>
+                <div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="vision-tab">
+                  <p>{{ beard.vision }}</p>
+                </div>
+                <div class="tab-pane fade" id="goal" role="tabpanel" aria-labelledby="goal-tab">
+                  <p>{{ beard.goal }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="thumb thumb-hover">
+              <img class="w-100" src="{{ beard.photo.url }}" alt="Olivine-Image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--== End Featured Product Area Wrapper ==-->
+
+    <!--== Start Video Area Wrapper ==-->
+    <section class="video-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="video-content content-style2">
+              <div class="thumb thumb-hover">
+                <img src="{{ video.photo.url }}" alt="Olivine-Image">
+                <h3 class="video-title">{{ video.name }}</h3>
+                <a class="btn-play play-video-popup" href="{{ video.youtube }}"><span class="icon"><img src="{{ video.icon.url }}" alt="Icon"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Video Area Wrapper ==-->
+
+    <!--== Start Brand Logo Area ==-->
+    <section class="brand-logo-area brand-logo-about-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-lg-6 m-auto">
+            <div class="section-title text-center">
+              <h2 class="title">Brand Logo</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-12">
+            <div class="swiper-container brand-logo-slider-container">
+              <div class="swiper-wrapper brand-logo-slider">
+                  {% for i in many_logo %}
+                <div class="swiper-slide brand-logo-item">
+                  <a href="#/"><img src="{{ i.logo.url }}" alt="Brand-Logo"></a>
+                </div>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Brand Logo Area ==-->
+  </main>
+
+
+{% endblock %}

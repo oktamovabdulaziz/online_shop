@@ -1,0 +1,612 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Olivine - Responsive Beard Oil Bootstrap 5 HTML Template</title>
+
+    <!--== Favicon ==-->
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon" />
+
+    <!--== Google Fonts ==-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,700,900,900i" rel="stylesheet">
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/icofont.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/fontello.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/font-vandella.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/aos.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/jquery.fancybox.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/slicknav.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<!--wrapper start-->
+<div class="wrapper home-default-wrapper">
+
+  <!--== Start Preloader Content ==-->
+{#  <div class="preloader-wrap">#}
+{#    <div class="preloader">#}
+{#      <span class="dot"></span>#}
+{#      <div class="dots">#}
+{#        <span></span>#}
+{#        <span></span>#}
+{#        <span></span>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+  <!--== End Preloader Content ==-->
+
+  <!--== Start Header Wrapper ==-->
+  <header class="header-wrapper">
+    <div class="header-top">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <div class="header-info">{{ info.phone }}</div>
+          </div>
+          <div class="col-6">
+            <div class="header-top-nav">
+              <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                <li><a href="{% url 'cart' %}">cart</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}">Wishlist</a></li>
+                <li><a href="{% url 'login' %}">cart</a></li>
+                {% endif %}
+             </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-area header-default sticky-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-5 col-sm-3 col-md-3 col-lg-2">
+            <div class="header-logo-area">
+              <a href="{% url 'index' %}">
+                <img class="logo-main" src="{% static 'assets/img/logo.png' %}" alt="Logo" />
+                <img class="logo-light" src="{% static 'assets/img/logo.png' %}" alt="Logo" />
+              </a>
+            </div>
+          </div>
+          <div class="col-7 col-sm-9 col-md-9 col-lg-10">
+            <div class="header-align">
+              <div class="header-navigation-area">
+                <ul class="main-menu nav justify-content-center">
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="{% url 'shop' %}">Shop</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+              </div>
+              <div class="header-action-area">
+                <div class="header-action-search header-search-rs">
+                  <div class="btn-search-content">
+                    <form action="{% url 'search' %}" method="get">
+                      <div class="form-input-item">
+                        <label for="search" class="sr-only">Search our store</label>
+                        <input type="text" id="search" name="q" placeholder="Search our store">
+                        <button type="submit" class="btn-src">
+                          <i class="icofont-search-1"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="header-action-cart">
+                  <a class="cart-icon" href="javascript:void(0);">
+                    <i class="icofont-shopping-cart"></i>
+                  </a>
+                </div>
+                <button class="btn-menu btn-menu-rs d-xl-none">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--== End Header Wrapper ==-->
+  
+  <main class="main-content">
+    <!--== Start Hero Area Wrapper ==-->
+    <section class="home-slider-area slider-default">
+      <div class="home-slider-content">
+        <div class="swiper-container home-slider-container">
+          <div class="swiper-wrapper">
+              {% for i in slider %}
+                <div class="swiper-slide">
+              <!-- Start Slide Item -->
+              <div class="home-slider-item">
+                <div class="slider-content-area">
+                  <div class="container">
+                    <div class="row align-items-center">
+                      <div class="col-xl-6 col-md-8">
+                        <div class="content">
+                          <div class="inner-content">
+                            <div class="tittle-wrp">
+                              <h2>The Best</h2>
+                              <h1>{{ i.name }}</h1>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-md-4">
+                        <div class="slider-thumb">
+                          <img src="{{ i.photo.url }}" alt="Olivine-Image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Slide Item -->
+            </div>
+              {% endfor %}
+          </div>          
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+    <!--== End Hero Area Wrapper ==-->
+
+    <!--== Start Featured Area Wrapper ==-->
+    <section class="featured-area featured-default-area">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-7" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row">
+                {% for i in service %}
+                    <div class="col-lg-6">
+                <div class="featured-item">
+                  <div class="inner-content">
+                    <div class="content">
+                      <h4 class="title">{{ i.name }}</h4>
+                      <p>{{ i.text }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-5" data-aos="fade-left" data-aos-duration="1000">
+            <div class="featured-thumb">
+              <img src="{{ the_bread.photo.url }}" alt="Olivine-Image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Featured Area Wrapper ==-->
+
+    <!--== Start Featured Product Area Wrapper ==-->
+    <section class="divider-area divider-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-duration="1000">
+            <div class="thumb mr-70 sm-mr-0">
+              <a href="{% url 'shop' %}"><img src="{{ the_bread.photo.url }}" alt="Olivine-Image"></a>
+            </div>
+          </div>
+          <div class="col-md-5 order-1 order-md-2" data-aos="fade-left" data-aos-duration="1000">
+            <div class="divider-content divider-content-style2">
+              <h2 class="title"><a href="shop.html">{{ the_bread.name }}<br> {{ the_bread.lastname }}</a></h2>
+              <p>{{ the_bread.text }}</p>
+              <a class="btn-link" href="{% url 'shop' %}">{{ the_bread.browse }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Featured Product Area Wrapper ==-->
+
+    <!--== Start Product Tab Area Wrapper ==-->
+    <section class="product-area product-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="product-tab-content" data-aos="fade-up" data-aos-duration="1000">
+              <div class="row">
+                  {% for i in product %}
+                     <div class="col-12 col-sm-3">
+                              <!-- Start Product Item -->
+                              <div class="product-item">
+                                <div class="product-thumb">
+                                  <a href="{% url 'product-detail' i.id %}">
+                                    <img src="{{ i.photo.url }}" alt="Olivine-Shop">
+                                  </a>
+                                  <div class="product-action">
+                                    <a class="action-cart" href="{% url 'add-cart' i.id %}">
+                                      <i class="icofont-shopping-cart"></i>
+                                    </a>
+                                    <a class="action-wishlist" href="javascript:void(0);" title="Quick View">
+                                      <i class="icon-zoom"></i>
+                                    </a>
+                                    <a class="action-compare" href="javascript:void(0);" title="Quick View">
+                                      <i class="icon-compare"></i>
+                                    </a>
+                                    <a class="action-quick-view" href="{% url 'add-wishlist' i.id  %}" title="Wishlist">
+                                      <i class="icon-heart-empty"></i>
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="product-info">
+                                  <h4 class="title"><a href="{% url 'product-detail' i.id %}">{{ i.name }}</a></h4>
+                                  <div class="prices">
+                                    <span class="price">{{ i.price }}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End Product Item -->
+                            </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+    <!--== End Product Tab Area Wrapper ==-->
+
+    <!--== Start Offer Area Wrapper ==-->
+    <div class="offer-area pt-0" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <div class="row">
+            {% for i in add %}
+              <div class="col-sm-6">
+            <div class="single-offer">
+              <div class="thumb">
+                <a href="{% url 'shop' %}">
+                  <img src="{{ i.photo.url }}" alt="Olivine-Image">
+                </a>
+              </div>
+            </div>
+          </div>
+           {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!--== End Offer Area Wrapper ==-->
+
+    <!--== Start Popular Products Area Wrapper ==-->
+    <section class="product-area similar-product-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-lg-6 m-auto" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title text-center">
+              <h2 class="title">More you need to see</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+          <div class="col-12">
+            <div class="swiper-container product4-slider-container">
+              <div class="swiper-wrapper">
+                  {% for i in is_new %}
+                <div class="swiper-slide">
+                  <!-- Start Product Item -->
+                  <div class="product-item">
+                    <div class="product-thumb">
+                      <a href="{% url 'product-detail' i.id %}">
+                        <img src="{{ i.photo.url }}" alt="Olivine-Shop">
+                      </a>
+                      <div class="product-action">
+                        <a class="action-cart" href="{% url 'add-cart' i.id %}" title="Shop">
+                          <i class="icofont-shopping-cart"></i>
+                        </a>
+                        <a class="action-quick-view" href="{% url 'add-wishlist' i.id %}" title="Wishlist">
+                          <i class="icon-heart-empty"></i>
+                        </a>
+                        <a class="action-compare" href="javascript:void(0);" title="Quick View">
+                          <i class="icon-compare"></i>
+                        </a>
+                        <a class="action-wishlist" href="javascript:void(0);" title="Quick View">
+                          <i class="icon-zoom"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="product-info">
+                      <h4 class="title"><a href="{% url 'product-detail' i.id %}">{{ i.name }}</a></h4>
+                      <div class="prices">
+                        <span class="price">${{ i.price }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Product Item -->
+                </div>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Popular Products Area Wrapper ==-->
+
+    <!--== Start Discount Area Wrapper ==-->
+    <section class="discount-area discount-default-area" data-bg-img="{{ health.photo.url }}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" data-aos="fade-up" data-aos-duration="1000">
+            <div class="discount-content">
+              <h3>{{ health.name }}</h3>
+              <h2>{{ health.price }}</h2>
+              <a href="{% url 'shop' %}">{{ health.view }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Discount Area Wrapper ==-->
+
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-area blog-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-lg-6 m-auto" data-aos="fade-up" data-aos-duration="1000">
+            <div class="section-title text-center">
+              <h2 class="title">Latest Blog</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row" data-aos="fade-up" data-aos-duration="1100">
+            {% for i in blog %}
+          <div class="col-lg-4 col-md-6">
+            <!--== Start Blog Post Item ==-->
+            <div class="post-item mb-sm-30">
+              <div class="thumb">
+                <a href="{% url 'blog_detail' i.id %}"><img src="{{ i.photo.url }}" alt="Olivine-Image"></a>
+              </div>
+              <div class="content">
+                <div class="inner-content">
+                  <h4 class="title">
+                    <a href="{% url 'blog_detail' i.id %}">{{ i.name }}</a>
+                  </h4>
+                  <div class="meta">
+                    <a class="post-date" href="{% url 'blog_detail' i.id %}">{{ i.created_at|date:'M d, Y' }}</a>
+                  </div>
+                    <p>{{ i.text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+
+    <!--== Start Brand Logo Area ==-->
+    <div class="brand-logo-area brand-logo-default-area" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12">
+            <div class="swiper-container brand-logo-slider-container">
+              <div class="swiper-wrapper brand-logo-slider">
+                  {% for i in many_logo %}
+                    <div class="swiper-slide brand-logo-item">
+                      <a href="#/"><img src="{{ i.logo.url }}" alt="Brand-Logo"></a>
+                    </div>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--== End Brand Logo Area ==-->
+  </main>
+
+  <!--== Start Footer Area Wrapper ==-->
+  <footer class="footer-area">
+    <div class="footer-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 m-auto">
+            <div class="widget-item text-center">
+              <div class="widget-logo-area">
+                <a href="{% url 'index' %}">
+                  <img class="logo-main" src="{{ info.logo.url }}" alt="Logo" />
+                </a>
+              </div>
+              <p>{{ info.text }}</p>
+              <div class="social-widget">
+                <a href="{{ info.tw }}"><i class="icon-social-twitter"></i></a>
+                <a href="{{ info.pin }}"><i class="icon-social-pinterest"></i></a>
+                <a href="{{ info.ins }}"><i class="icon-social-instagram"></i></a>
+                <a href="{{ info.fb }}"><i class="icon-social-facebook-square"></i></a>
+              </div>
+              <div class="widget-menu-wrap">
+                <ul class="nav-menu">
+                  <li><a href="{% url  'about' %}">About Us</a></li>
+                  <li><a href="{% url 'faq' %}">FAQ</a></li>
+                  <li><a href="{% url 'contact' %}">Help</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div class="widget-copyright text-center">
+                <p>Copyright © 2023 <a target="_blank" href="https://www.hasthemes.com">HasThemes</a> | Built with <a href="{% static 'index' %}">Olivine</a> by <a target="_blank" href="https://www.hasthemes.com">HasThemes</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--== End Footer Area Wrapper ==-->
+  
+  <!--== Scroll Top Button ==-->
+  <div class="scroll-to-top"><span class="icofont-arrow-up"></span></div>
+
+  <!--== Start Quick View Menu ==-->
+  <aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+      <div class="product-quick-view-content">
+        <button type="button" class="btn-close">
+          <span class="close-icon"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="thumb">
+              <img src="{% static 'assets/img/shop/quick-view1.webp' %}" alt="Olivine-Shop">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="content">
+              <h4 class="title">Product dummy title</h4>
+              <div class="prices">
+                <del class="price-old">$167.540</del>
+                <span class="price">$141.76</span>
+              </div>
+              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,</p>
+              <div class="quick-view-select">
+                <div class="quick-view-select-item">
+                  <label for="forSize" class="form-label">Size:</label>
+                  <select class="form-select" id="forSize" required>
+                    <option selected value="">s</option>
+                    <option>m</option>
+                    <option>l</option>
+                    <option>xl</option>
+                  </select>
+                </div>
+                <div class="quick-view-select-item">
+                  <label for="forColor" class="form-label">Color:</label>
+                  <select class="form-select" id="forColor" required>
+                    <option selected value="">red</option>
+                    <option>green</option>
+                    <option>blue</option>
+                    <option>yellow</option>
+                    <option>white</option>
+                  </select>
+                </div>
+              </div>
+              <div class="action-top">
+                <div class="pro-qty">
+                  <input type="text" id="quantity2" title="Quantity" value="1" />
+                </div>
+                <button class="btn btn-black">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="canvas-overlay"></div>
+  </aside>
+  <!--== End Quick View Menu ==-->
+
+  <!--== Start Sidebar Cart Menu ==-->
+  <aside class="sidebar-cart-modal">
+    <div class="sidebar-cart-inner">
+      <div class="sidebar-cart-content">
+        <a class="cart-close" href="javascript:void(0);"><i class="icofont-close-line"></i></a>
+        <div class="sidebar-cart">
+          <h4 class="sidebar-cart-title">Shopping Cart</h4>
+          <div class="product-cart">
+              {% for i in card %}
+            <div class="product-cart-item">
+              <div class="product-img">
+                <a href="{% url 'shop' %}"><img src="{{ i.product.photo.url }}" alt=""></a>
+              </div>
+              <div class="product-info">
+                <h4 class="title"><a href="{% url 'shop' %}">{{ i.product.name }}</a></h4>
+                <span class="info">{{ i.product.price }}</span>
+              </div>
+              <div class="product-delete"><a href="{% url 'remove-cart' i.id 'index' %}">×</a></div>
+            </div>
+              {% endfor %}
+          </div>
+          <div class="cart-total">
+            <h4>Total: <span class="money">{{ total }}.00</span></h4>
+          </div>
+          <div class="cart-checkout-btn">
+            <a class="btn-theme" href="{% url 'cart' %}">View Cart</a>
+            <a class="btn-theme" href="{% url 'checkout' %}">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!--== End Sidebar Cart Menu ==-->
+
+  <!--== Start Side Menu ==-->
+  <aside class="off-canvas-wrapper">
+    <div class="off-canvas-inner">
+      <div class="off-canvas-overlay d-none"></div>
+      <!-- Start Off Canvas Content Wrapper -->
+      <div class="off-canvas-content">
+        <!-- Off Canvas Header -->
+        <div class="off-canvas-header">
+          <div class="close-action">
+            <button class="btn-close"><i class="icofont-close-line"></i></button>
+          </div>
+        </div>
+
+        <div class="off-canvas-item">
+          <!-- Start Mobile Menu Wrapper -->
+          <div class="res-mobile-menu">
+            <!-- Note Content Auto Generate By Jquery From Main Menu -->
+          </div>
+          <!-- End Mobile Menu Wrapper -->
+        </div>
+        <!-- Off Canvas Footer -->
+        <div class="off-canvas-footer"></div>
+      </div>
+      <!-- End Off Canvas Content Wrapper -->
+    </div>
+  </aside>
+  <!--== End Side Menu ==-->
+</div>
+<!--=======================Javascript============================-->
+<!--=== Modernizr Min Js ===-->
+<script src="{% static 'assets/js/modernizr.js' %}"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-migrate.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.appear.js' %}"></script>
+<script src="{% static 'assets/js/swiper.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/fancybox.min.js' %}"></script>
+<script src="{% static 'assets/js/aos.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+
+</html>

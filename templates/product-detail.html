@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <main class="main-content site-wrapper-reveal">
+    <!--== Start Page Title Area ==-->
+    <section class="page-title-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-title-content">
+              <h2 class="title">{{ product.id }} {{ product.name }}</h2>
+              <div class="bread-crumbs"><a href="index.html">Home<span class="breadcrumb-sep">></span></a><span class="active">{{ product.id }} {{ product.name }}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Page Title Area ==-->
+
+    <!--== Start Shop Area ==-->
+    <section class="product-area shop-single-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="single-product-thumb simple-product-thumb">
+              <div class="zoom zoom-hover">
+                <div class="thumb-item">
+                  <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/details/1.webp">
+                    <img src="{{ product.photo.url }}" alt="Image-HasTech">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="single-product-info">
+              <h4 class="title">{{ product.id }} {{ product.name }}</h4>
+              <div class="product-ratting">
+                <div class="product-sku">
+                  SKU: <span>101</span>
+                </div>
+                <div class="ratting-icons">
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+                </div>
+              </div>
+              <p class="product-desc">{{ product.description }}</p>
+              <div class="prices">
+                <span class="price">${{ product.price }}</span>
+              </div>
+              <div class="quick-product-action">
+                <div class="action-top">
+                  <a class="btn-theme" href="{% url 'checkout' %}">Buy it now</a>
+                </div>
+                <div class="action-bottom">
+                  <button class="btn btn-black" href="{% url 'add-cart' product.id %}">Add to cart</button>
+                  <a class="btn-wishlist" href="{% url 'add-wishlist' product.id %}"><i class="icon-heart-empty"></i></a>
+                  <a class="btn-wishlist" href="{% url 'add-wishlist' product.id %}"><i class="icon-compare"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Shop Area ==-->
+
+    <!--== Start Shop Tab Area ==-->
+    <section class="product-area product-description-review-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="product-description-review">
+              <ul class="nav nav-tabs product-description-tab-menu" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="product-desc-tab" data-bs-toggle="tab" data-bs-target="#productDesc" type="button" role="tab" aria-controls="productDesc" aria-selected="true">Description</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="product-review-tab" data-bs-toggle="tab" data-bs-target="#productReview" type="button" role="tab" aria-controls="productReview" aria-selected="false">Reviews</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="product-comment-tab" data-bs-toggle="tab" data-bs-target="#commentProduct" type="button" role="tab" aria-controls="commentProduct" aria-selected="false">Comments</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="product-custom-tab" data-bs-toggle="tab" data-bs-target="#productCustom" type="button" role="tab" aria-controls="productCustom" aria-selected="false">Shipping Policy</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="product-info-tab" data-bs-toggle="tab" data-bs-target="#productInfo" type="button" role="tab" aria-controls="productInfo" aria-selected="false">Size chart</button>
+                </li>
+              </ul>
+              <div class="tab-content product-description-tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="productDesc" role="tabpanel" aria-labelledby="product-desc-tab">
+                  <div class="product-desc">
+                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="productReview" role="tabpanel" aria-labelledby="product-review-tab">
+                  <div class="product-review">
+                    <div class="review-header">
+                      <h4 class="title">Customer Reviews</h4>
+                      <div class="review-info">
+                        <ul class="review-rating">
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star-o"></i></li>
+                        </ul>
+                        <span class="review-caption">Based on 1 review</span>
+                        <span class="review-write-btn">Write a review</span>
+                      </div>
+                    </div>
+                    <div class="product-review-form">
+                      <h4 class="title">Write a review</h4>
+                      <form action="#" method="post">
+                        <div class="review-form-content">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="reviewFormName">Name</label>
+                                <input class="form-control" id="reviewFormName" type="text" placeholder="Enter your name" required="">
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="reviewFormEmail">Email</label>
+                                <input class="form-control" id="reviewFormEmail" type="email" placeholder="john.smith@example.com" required="">
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="rating">
+                                <span class="rating-title">Rating</span>
+                                <span>
+                                  <a class="fa fa-star-o" href="#/"></a>
+                                  <a class="fa fa-star-o" href="#/"></a>
+                                  <a class="fa fa-star-o" href="#/"></a>
+                                  <a class="fa fa-star-o" href="#/"></a>
+                                  <a class="fa fa-star-o" href="#/"></a>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="reviewReviewTitle">Review Title</label>
+                                <input class="form-control" id="reviewReviewTitle" type="text" placeholder="Give your review a title" required="">
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="reviewFormTextarea">Body of Review <span>(1500)</span></label>
+                                <textarea class="form-control textarea" id="reviewFormTextarea" name="comment" rows="7" placeholder="Write your comments here" required=""></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group pull-right">
+                                <button class="btn btn-theme" type="submit">Submit Review</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="review-content">
+                      <div class="review-item">
+                        <ul class="review-rating">
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star"></i></li>
+                          <li><i class="fa fa-star-o"></i></li>
+                        </ul>
+                        <h4 class="title">Cobus Bester</h4>
+                        <h5 class="review-date"><span>Cobus Bester</span> on <span>Mar 03, 2021</span></h5>
+                        <p>Can’t wait to start mixin’ with this one! Irba-irr-Up-up-up-up-date your theme!</p>
+                        <a class="review-report" href="#/">Report as Inappropriate</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="commentProduct" role="tabpanel" aria-labelledby="product-comment-tab">
+                  <div class="product-comment">
+                    <form action="#">
+                      <div class="product-comment-content">
+                        <img src="assets/img/shop/comment.png" alt="Image-HasTech">
+                        <textarea name="con_message" placeholder="Start the discussion…"></textarea>
+                      </div>
+                      <button class="btn btn-theme" type="submit">Post as Product</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="productCustom" role="tabpanel" aria-labelledby="product-custom-tab">
+                  <div class="product-shipping-policy">
+                    <div class="section-title">
+                      <h2 class="title">Shipping policy for our store</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate</p>
+                    </div>
+                    <ul class="shipping-policy-list">
+                      <li>1-2 business days (Typically by end of day)</li>
+                      <li><a href="#">30 days money back guaranty</a></li>
+                      <li>24/7 live support</li>
+                      <li>odio dignissim qui blandit praesent</li>
+                      <li>luptatum zzril delenit augue duis dolore</li>
+                      <li>te feugait nulla facilisi.</li>
+                    </ul>
+                    <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum</p>
+                    <p>claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per</p>
+                    <p>seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="productInfo" role="tabpanel" aria-labelledby="product-info-tab">
+                  <div class="product-size-chart">
+                    <h4>Size Chart</h4>
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td class="cun-name"><span>UK</span></td>
+                          <td>18</td>
+                          <td>20</td>
+                          <td>22</td>
+                          <td>24</td>
+                          <td>26</td>
+                        </tr>
+                        <tr>
+                          <td class="cun-name"><span>European</span></td>
+                          <td>46</td>
+                          <td>48</td>
+                          <td>50</td>
+                          <td>52</td>
+                          <td>54</td>
+                        </tr>
+                        <tr>
+                          <td class="cun-name"><span>usa</span></td>
+                          <td>14</td>
+                          <td>16</td>
+                          <td>18</td>
+                          <td>20</td>
+                          <td>22</td>
+                        </tr>
+                        <tr>
+                          <td class="cun-name"><span>Australia</span></td>
+                          <td>28</td>
+                          <td>10</td>
+                          <td>12</td>
+                          <td>14</td>
+                          <td>16</td>
+                        </tr>
+                        <tr>
+                          <td class="cun-name"><span>Canada</span></td>
+                          <td>24</td>
+                          <td>18</td>
+                          <td>14</td>
+                          <td>42</td>
+                          <td>36</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Shop Tab Area ==-->
+
+    <!--== Start Popular Products Area Wrapper ==-->
+    <section class="product-area similar-product-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 m-auto">
+            <div class="section-title">
+              <h2 class="title title-style2">Related Product</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper-container product4-slider-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <!-- Start Product Item -->
+                  <div class="product-item">
+                    <div class="product-thumb">
+                      <a href="shop-single-product.html">
+                        <img src="{{ product.photo.url }}" alt="Olivine-Shop">
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h4 class="title"><a href="shop-single-product.html">Demo product title</a></h4>
+                      <div class="prices">
+                        <span class="price">$29.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Product Item -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+ {% endblock %}

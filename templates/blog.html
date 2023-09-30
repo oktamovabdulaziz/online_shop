@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block content %}
+  
+  <main class="main-content">
+    <!--== Start Page Title Area ==-->
+    <section class="page-title-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-title-content ">
+              <h2 class="title">News</h2>
+              <div class="bread-crumbs"><a href="{% url 'index' %}">Home<span class="breadcrumb-sep">></span></a><span class="active">News</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Page Title Area ==-->
+
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-grid-area">
+      <div class="container">
+        <div class="row flex-row-reverse">
+          <div class="col-lg-9">
+            <div class="blog-content-area post-items-style2 ml-20">
+              <div class="row">
+                  {% for i in blog %}
+                <div class="col-lg-6 col-md-6 col-12">
+                  <!--== Start Blog Post Item ==-->
+                  <div class="post-item">
+                    <div class="thumb">
+                      <a href="{% url 'blog_detail' i.id %}"><img src="{{ i.photo.url }}" alt="Olivine-Image"></a>
+                    </div>
+                    <div class="content">
+                      <div class="inner-content">
+                        <h4 class="title">
+                          <a href="{% url 'blog_detail' i.id %}">{{ i.name }}</a>
+                        </h4>
+                        <div class="meta">
+                          <a class="post-date" href="{% url 'blog' %}">{{ i.created_at }}</a>
+                        </div>
+                        <p>{{ i.text }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!--== End Blog Post Item ==-->
+                </div>
+                  {% endfor %}
+              </div>
+          {% if blogs.paginator.num_pages > 1 %}
+          <div class="card-footer d-flex justify-content-end">
+              <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                      {% if blogs.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link " href="?page={{ blogs.previous_page_number }}">
+                                Previous
+                            </a>
+                          </li>
+                      {% endif %}
+                      {% for num in blogs.paginator.page_range %}
+                      {% if num == blogs.number %}
+                        <li class="page-item active">
+                            <a class="page-link" href="#" tabindex="-1">{{ num }}</a>
+                        </li>
+                      {% elif num > blogs.number|add:'-2' and num < blogs.number|add:'2' %}
+                       <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                      {% endif %}
+                      {% endfor %}
+                      {% if blogs.has_next %}
+                      <li class="page-item">
+                            <a class="page-link " href="?page={{ blogs.next_page_number }}">
+                                Next
+                            </a>
+                      </li>
+                      {% endif %}
+                  </ul>
+              </nav>
+          </div>
+          {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="sidebar-area mt-01 mt-md-70">
+              <div class="widget">
+                <h3 class="widget-title">Search</h3>
+                <div class="widget-search-box">
+                  <form action="#" method="post">
+                    <div class="form-input-item">
+                      <label for="search2" class="sr-only">Search Here</label>
+                      <input type="text" id="search2" placeholder="Search our store">
+                      <button type="submit" class="btn-src">
+                        <i class="icofont-search-1"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>              
+              <div class="widget">
+                <h3 class="widget-title">Custom Menu</h3>
+                <div class="widget-nav">
+                  <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'shop' %}">Shop</a></li>
+                    <li><a href="{% url 'shop' %}">Product</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <h3 class="widget-title">Recent Post</h3>
+                <div class="widget-blog-post">
+                  <ul>
+                      {% for i in is_new %}
+                    <li>
+                      <div class="thumb">
+                        <a href="{% url 'blog_detail' i.id %}"><img src="{{ i.photo.url }}" alt="Image-HasTech"></a>
+                      </div>
+                      <div class="content">
+                        <a href="{% url 'blog_detail' i.id %}">{{ i.name }}</a>
+                        <span>{{ i.created_at }}</span>
+                      </div>
+                    </li>
+                      {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <h3 class="widget-title">Tags</h3>
+                <div class="widget-tags mb-0">
+                  <ul>
+                    <li><a href="{% url 'blog' %}">Beard</a></li>
+                    <li><a href="{% url 'blog' %}">Beard oil</a></li>
+                    <li><a href="{% url 'blog' %}">Oil</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+  </main>
+
+  {% endblock %}

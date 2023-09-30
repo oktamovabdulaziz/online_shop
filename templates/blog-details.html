@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static  %}
+  {% block content %}
+ <main class="main-content">
+    <!--== Start Page Title Area ==-->
+    <section class="page-title-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-title-content ">
+              <h2 class="title">Why use Beard Oil?</h2>
+              <div class="bread-crumbs"><a href="{% url 'index' %}">Home<span class="breadcrumb-sep">></span></a><a href="blog.html">News<span class="breadcrumb-sep">></span></a><span class="active"> Why use Beard Oil?</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Page Title Area ==-->
+
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-details-area">
+      <div class="container">
+        <div class="row flex-row-reverse">
+          <div class="col-lg-9">
+            <div class="post-details-content ml-20">
+              <div class="post-details-body">
+                <div class="content">
+                  <div class="thumb">
+                    <img class="w-100" src="{{ blog.photo.url }}" alt="Olivine-Blog">
+                  </div>
+                  <h4>{{ blog.name }}</h4>
+                  <ul class="meta">
+                    <li class="author">Olivine Demo Admin</li>
+                    <li>-</li>
+                    <li class="date">{{ blog.created_at }}</li>
+                  </ul>
+                  <p>{{ blog.text }}</p>
+                  <div class="category-social-content">
+                    <div class="category-items">
+                      <span>Tags :</span>
+                      <a href="{% url 'blog' %}">Beard ,</a>
+                      <a href="{% url 'blog' %}">Beard oil ,</a>
+                      <a href="{% url 'blog' %}">Oil</a>
+                    </div>
+                    <div class="social-items">
+                      <span>Share this post :</span>
+                      <a href="{{ info.fb }}"><i class="icon-social-facebook-square"></i></a>
+                      <a href="{{ info.tw }}"><i class="icon-social-twitter"></i></a>
+                      <a href="{{ info.pin }}"><i class="icon-social-pinterest"></i></a>
+                    </div>
+                  </div>
+{#                  <div class="page-next-prev">#}
+{#                    <div class="nav-item prev">← <a href="blog-details.html">Older Post</a></div>#}
+{#                    <div class="nav-item next"><a href="blog-details.html">Newer Post</a> →</div>#}
+{#                  </div>#}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="sidebar-area mt-01 mt-md-50">
+              <div class="widget">
+                <h3 class="widget-title">Search</h3>
+                <div class="widget-search-box">
+                  <form action="#" method="post">
+                    <div class="form-input-item">
+                      <label for="search2" class="sr-only">Search Here</label>
+                      <input type="text" id="search2" placeholder="Search our store">
+                      <button type="submit" class="btn-src">
+                        <i class="icofont-search-1"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="widget">
+                <h3 class="widget-title">Recent Post</h3>
+                <div class="widget-blog-post">
+                  <ul>
+                    <li>
+                      <div class="thumb">
+                        <a href="{% url 'blog'%}"><img src="{{ blog.photo.url }}" alt="Image-HasTech"></a>
+                      </div>
+                      <div class="content">
+                        <a href="{% url 'blog'  %}">{{ blog.name }}</a>
+                        <span>{{ blog.created_at }}</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <h3 class="widget-title">Tags</h3>
+                <div class="widget-tags">
+                  <ul>
+                    <li><a href="{% url 'blog' %}">Beard</a></li>
+                    <li><a href="{% url 'blog' %}">Beard oil</a></li>
+                    <li><a href="{% url 'blog' %}">Oil</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <h3 class="widget-title">Custom Menu</h3>
+                <div class="widget-nav mb-0">
+                  <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'shop' %}">Shop</a></li>
+                    <li><a href="{% url 'shop' %}">Product</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+  </main>
+ {% endblock %}

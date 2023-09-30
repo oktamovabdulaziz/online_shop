@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Shop Checkout - Responsive Beard Oil Bootstrap 5 HTML Template</title>
+
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,700,900,900i" rel="stylesheet">
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/icofont.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/fontello.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/font-vandella.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/aos.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/jquery.fancybox.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/slicknav.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<!--wrapper start-->
+<div class="wrapper product-information-wrapper">
+
+  <!--== Start Preloader Content ==-->
+  <div class="preloader-wrap">
+  	<div class="preloader">
+	    <span class="dot"></span>
+	    <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+	    </div>
+  	</div>
+  </div>
+  <!--== End Preloader Content ==-->
+
+  <main class="main-content">
+    <!--== Start Product Area Wrapper ==-->
+    <section class="product-area product-information-area">
+      <div class="container">
+        <div class="product-information">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="edit-checkout-head">
+                <div class="header-logo-area">
+                  <a href="{% url 'index' %}">
+                    <img class="logo-main" src="{% static 'assets/img/logo.png' %}" alt="Logo">
+                    <img class="logo-light" src="{% static 'assets/img/logo.png' %}" alt="Logo">
+                  </a>
+                </div>
+                <div class="breadcrumb-area">
+                  <ul>
+                    <li><a href="{% url  'cart' %}">Cart</a><i class="fa fa-angle-right"></i></li>
+                    <li class="active">Information<i class="fa fa-angle-right"></i></li>
+                    <li>Shipping<i class="fa fa-angle-right"></i></li>
+                    <li>Payment</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="edit-checkout-information">
+                <h4 class="title">Contact information</h4>
+                <div class="logged-in-information">
+                  <div class="thumb" data-bg-img="{% static 'assets/img/photos/gravatar2.png' %}"></div>
+                  <p>
+                    <span class="name">{{ user.username }}</span>
+                    <span>{{ user.first_name }}</span>
+                    <a href="{% url 'logout' %}">Log out</a>
+                  </p>
+                </div>
+                <form action="{% url 'create-order' %}" method="post">
+                  {% csrf_token %}
+                <div class="edit-checkout-form">
+                  <h4 class="title">Shipping address</h4>
+                  <div class="row row-gutter-12">
+                    <div class="col-lg-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGrid" name="first_name" placeholder="name" value="{{ user.first_name }}" required >
+                        <label for="floatingInputGrid">First name (optional)</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput2Grid" name="last_name" placeholder="name" value="{{ user.last_name }}" required >
+                        <label for="floatingInput2Grid">Last name</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput3Grid" name="address" placeholder="address" value="" required >
+                        <label for="floatingInput3Grid">Address</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput4Grid" name="apartment" placeholder="apartment" value="" required >
+                        <label for="floatingInput4Grid">Apartment, suite, etc. (optional)</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-floating">
+                        <select class="form-select form-control" id="floatingInput6rid" aria-label="Floating label select example" name="region" required >
+                          {% for i in region %}
+                          <option value="{{ i.id }}">{{ i.name }}</option>
+                          {% endfor %}
+                        </select>
+                        <div class="field-caret"></div>
+                        <label for="floatingInput6rid">Country/Region</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput7Grid" placeholder="address" name="postal_code" value="" required>
+                        <label for="floatingInput7Grid">Postal code</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="btn-box">
+                        <a class="btn-return" href="shop-cart.html"><svg focusable="false" aria-hidden="true" class="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path></svg>Return to cart</a>
+                        <button class="btn-shipping" type="submit">Order now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  </form>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="shipping-cart-subtotal-wrapper">
+                <div class="shipping-cart-subtotal">
+                  {% for i in card %}
+                  <div class="shipping-cart-item">
+                    <div class="thumb">
+                      <img src="{{ i.product.photo.url }}" alt="">
+                      <span class="quantity">1</span>
+                    </div>
+                    <div class="content">
+                      <h4 class="title">{{ i.product.name }}</h4>
+                      <span class="price">{{ i.product.price }}</span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="shipping-subtotal">
+                    <p><span>Subtotal</span><span><strong>{{ total }}</strong></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Product Area Wrapper ==-->
+    <div class="edit-checkout-footer">
+      <p>All rights reserved Demo Olivine</p>
+    </div>
+  </main>
+  
+  <!--== Scroll Top Button ==-->
+  <div class="scroll-to-top"><span class="fa fa-angle-double-up"></span></div>
+</div>
+
+<!--=======================Javascript============================-->
+
+<!--=== Modernizr Min Js ===-->
+<script src="{% static 'assets/js/modernizr.js' %}"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-migrate.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.appear.js' %}"></script>
+<script src="{% static 'assets/js/swiper.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/fancybox.min.js' %}"></script>
+<script src="{% static 'assets/js/aos.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-zoom.min.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+
+</html>
